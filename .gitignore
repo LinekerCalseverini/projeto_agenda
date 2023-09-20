@@ -134,6 +134,7 @@ cython_debug/
 *.pyc
 media
 static
+project/local_settings.py
 
 # Backup files #
 *.bak
