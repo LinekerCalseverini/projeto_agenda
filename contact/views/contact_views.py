@@ -3,7 +3,11 @@ from contact.models import Contact
 
 
 def index(request):
-    contacts = Contact.objects.all()
+    contacts = Contact.objects.all() \
+        .filter(show=True) \
+        .order_by('-id')[10:30]
+    
+    print(contacts.query)
 
     context = {
         'contacts': contacts
