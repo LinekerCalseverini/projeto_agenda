@@ -9,7 +9,8 @@ def index(request):
         .order_by('-id')[10:30]
 
     context = {
-        'contacts': contacts
+        'contacts': contacts,
+        'site_title': 'Contatos - '
     }
 
     return render(
@@ -22,12 +23,14 @@ def index(request):
 def contact(request, contact_id):
     # single_contact = Contact.objects.filter(id=contact_id).first()
     single_contact = get_object_or_404(Contact, id=contact_id, show=True)
+    contact_name = f'{single_contact.first_name} {single_contact.last_name} - '
 
     if single_contact is None:
         raise Http404()
 
     context = {
-        'contact': single_contact
+        'contact': single_contact,
+        'site_title': contact_name
     }
 
     return render(
