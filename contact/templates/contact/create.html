@@ -3,6 +3,7 @@
     <div class="form-wrapper">
         <h2>Contact</h2>
         <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
             <div class="form-content">
                 <div class="form-group">
                     <label for="id_first_name">LABEL</label>
