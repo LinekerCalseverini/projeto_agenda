@@ -1,6 +1,4 @@
-from django.shortcuts import get_object_or_404, redirect, render
-
-from contact.models import Contact
+from django.shortcuts import render
 
 
 def create(request):
