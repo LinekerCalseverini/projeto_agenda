@@ -1,12 +1,22 @@
 from django.shortcuts import render
+from contact.forms import ContactForm
 
 
 def create(request):
     if request.method == 'POST':
-        request.POST.get('first_name')
-        request.POST.get('last_name')
+        context = {
+            'form': ContactForm(request.POST)
+        }
 
-    context = {}
+        return render(
+            request,
+            'contact/create.html',
+            context
+        )
+
+    context = {
+        'form': ContactForm()
+    }
 
     return render(
         request,

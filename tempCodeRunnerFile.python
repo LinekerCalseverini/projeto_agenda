@@ -1,0 +1,26 @@
+import json
+
+class DictClass:
+    def __init__(self, data_dict) -> None:
+        self._data = data_dict
+    
+    def __getattr__(self, attr):
+        attr_data = self._data[attr]
+        if isinstance(attr_data, dict):
+            return DictClass(attr_data)
+        
+        return self._data[attr]
+    
+    def __str__(self):
+        return json.dumps(self._data)
+    
+
+dict_class = DictClass({
+    'data': 'This is a data string', 
+    'data_dict': {
+        'data_inside': 'This is a data string inside of a dict'
+        }
+    })
+print(dict_class.data)
+print(dict_class.data_dict.data_inside)
+print(dict_class)
